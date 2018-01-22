@@ -8,7 +8,7 @@ from tkinter import *
 import time
 
 #
-#This widget visualise a steam of data
+#This widget visualises a stream of data
 #It extends the Canvas tkinter package
 #It uses a FIFO to store the stream of data,a fixed number of data points is retained and displayed, 
 #when the FIFO is full, the newest entry deletes the oldest.
@@ -148,7 +148,7 @@ class Chart(Canvas):
 
 
     #add a data point
-    #this is how you stream data into
+    #this is how you stream data into the chart
     #the value of x doesn't matter
     # y is the actual value of the parameter you want to visualize
     #This function also updates the user interface, no need to call self.draw()
@@ -209,18 +209,12 @@ class Chart(Canvas):
             return
 
         # figure out a scheme from data to in the list to chart point
-
-        #check if there is data to be processed
-        if len(self.list_of_emlements)==0:
-            return
-
-
         (axis_min_x, axis_min_y, axis_max_x, axis_max_y) = self.__find_axis_min_x_y_max_x_y()
 
         #do avoid divition by zero
         if (axis_max_x - axis_min_x)==0:
             axis_max_x+=5
-
+            
         if (axis_max_y - axis_min_y)==0:
             axis_max_y+=5
 
